@@ -1,8 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Store, select } from '@ngrx/store';
-import { fromRoot } from '../../store';
 import { Observable } from 'rxjs';
-
+import { getValidState } from '../../store/selectors';
 @Component({
   selector: 'app-valid-state',
   templateUrl: './valid-state.component.html',
@@ -12,7 +11,7 @@ export class ValidStateComponent implements OnInit {
   valid$: Observable<string>;
   isValid;
   constructor(private store: Store) {
-    this.valid$ = this.store.select(fromRoot.getValidState);
+    this.valid$ = this.store.select(getValidState);
   }
 
   ngOnInit(): void {

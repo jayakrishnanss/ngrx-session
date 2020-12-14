@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { Store, select } from '@ngrx/store';
-import { fromRoot } from './store';
+import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-
+import { ApiGetMockData } from './store/actions';
+import { getStateSelectedData } from './store/selectors';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -13,7 +13,7 @@ export class AppComponent {
   JSON = JSON;
   techData;
   constructor(private store: Store) {
-    this.data$ = this.store.select(fromRoot.getStateSelectedData);
+    this.data$ = this.store.select(getStateSelectedData);
   }
 
   ngOnInit() {
@@ -21,7 +21,7 @@ export class AppComponent {
   }
 
   getApiData() {
-    this.store.dispatch(fromRoot.ApiGetMockData({ id: 'randomId' }));
+    this.store.dispatch(ApiGetMockData({ id: 'randomId' }));
   }
 
   initSubscription() {

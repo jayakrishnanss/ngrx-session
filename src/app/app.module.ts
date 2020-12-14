@@ -4,7 +4,8 @@ import { FormsModule } from '@angular/forms';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { EffectsModule } from '@ngrx/effects';
-import { fromRoot } from './store';
+import { rootReducer } from './store/reducer';
+import { RootEffects } from './store/effects';
 
 import { AppComponent } from './app.component';
 import { ValidStateComponent } from './components/valid-state/valid-state.component';
@@ -14,9 +15,9 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
   imports: [
     BrowserModule,
     FormsModule,
-    EffectsModule.forRoot([fromRoot.RootEffects]),
+    EffectsModule.forRoot([RootEffects]),
     StoreModule.forRoot({
-      rootState: fromRoot.rootReducer,
+      rootState: rootReducer,
     }),
     StoreDevtoolsModule.instrument({}),
     NgbModule,

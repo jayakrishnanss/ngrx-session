@@ -1,21 +1,8 @@
 import { Injectable } from '@angular/core';
 import { createEffect, Actions, ofType } from '@ngrx/effects';
 import { MockApiService } from '../services/mockapi.service';
-import {
-  ApiGetMockData,
-  ApiGetMockDataWithError,
-  ApiError,
-  ApiSuccess,
-} from './actions';
-import {
-  switchMap,
-  catchError,
-  map,
-  mergeMap,
-  tap,
-  concatMap,
-  exhaustMap,
-} from 'rxjs/operators';
+import { ApiGetMockData, ApiError, ApiSuccess } from './actions';
+import { catchError, map, mergeMap } from 'rxjs/operators';
 import { of } from 'rxjs';
 
 @Injectable()
